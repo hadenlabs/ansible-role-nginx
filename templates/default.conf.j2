@@ -1,0 +1,74 @@
+{% for item in nginx_vhost_upstreams %}
+upstream {{ item.name }} {
+  {% if item.proxy_pass is defined %}
+   server {{ item.proxy_pass|indent(4) }};
+  {% endif %}
+}
+{% endfor %}
+
+{% for vhost in nginx_vhosts %}
+server {
+    listen {{ vhost.listen | default('80 default_server') | indent(4) }};
+
+# don't send the nginx version number in error pages and Server header
+server_tokens off;
+
+{% if nginx_add_security_header %}
+# config to don't allow the browser to render the page inside an frame or iframe
+# and avoid clickjacking http://en.wikipedia.org/wiki/Clickjacking
+# if you need to allow [i]frames, you can use SAMEORIGIN or even set an uri with ALLOW-FROM uri
+# https://developer.mozilla.org/en-US/docs/HTTP/X-Frame-Options
+add_header X-Frame-Options SAMEORIGIN;
+{% endif %}
+
+{% if nginx_add_security_header %}
+# when serving user-supplied content, include a X-Content-Type-Options: nosniff header along with the Content-Type: header,
+# to disable content-type sniffing on some browsers.
+# https://www.owasp.org/index.php/List_of_useful_HTTP_headers
+# currently suppoorted in IE > 8 http://blogs.msdn.com/b/ie/archive/2008/09/02/ie8-security-part-vi-beta-2-update.aspx
+# http://msdn.microsoft.com/en-us/library/ie/gg622941(v=vs.85).aspx
+# 'soon' on Firefox https://bugzilla.mozilla.org/show_bug.cgi?id=471020
+add_header X-Content-Type-Options nosniff;
+{% endif %}
+
+{% if nginx_add_security_header %}
+# This header enables the Cross-site scripting (XSS) filter built into most recent web browsers.
+# It's usually enabled by default anyway, so the role of this header is to re-enable the filter for 
+# this particular website if it was disabled by the user.
+# https://www.owasp.org/index.php/List_of_useful_HTTP_headers
+add_header X-XSS-Protection "1; mode=block";
+{% endif %}
+
+{% if vhost.server_name is defined %}
+    server_name {{ vhost.server_name }};
+{% endif %}
+
+{% if vhost.root is defined %}
+    root {{ vhost.root }};
+{% endif %}
+    index {{ vhost.index | default('index.html index.htm') }};
+{% if vhost.charset is defined %}
+    charset {{ vhost.charset }};
+{% endif %}
+{% if vhost.client_max_body_size is defined %}
+    client_max_body_size {{ vhost.client_max_body_size }};
+{% endif %}
+{% if vhost.error_page is defined %}
+    error_page {{ vhost.error_page }};
+{% endif %}
+{% if vhost.access_log is defined %}
+    access_log {{ vhost.access_log }};
+{% endif %}
+{% if vhost.error_log is defined %}
+    error_log {{ vhost.error_log }} error;
+{% endif %}
+
+{% if vhost.return is defined %}
+    return {{ vhost.return }};
+{% endif %}
+
+{% if vhost.extra_parameters is defined %}
+    {{ vhost.extra_parameters|indent(4) }}
+{% endif %}
+}
+{% endfor %}

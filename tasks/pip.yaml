@@ -1,0 +1,9 @@
+---
+# task for equipindustry.nginx
+
+- name: Install packages via pip nginx
+  become: true
+  pip: name="{{ item.name }}" version="{{ item.version }}"
+  when:
+    - _nginx_pip_packages is defined
+  with_items: "{{ _nginx_pip_packages | default({}) }}"

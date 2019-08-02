@@ -1,0 +1,11 @@
+---
+
+# task file for equipindustry.nginx
+
+- name: Add PPA for Nginx.
+  apt_repository:
+    repo: 'ppa:nginx/{{ _nginx_ppa_version }}'
+    state: present
+    update_cache: true
+  register: nginx_ppa_added
+  when: _nginx_ppa_use

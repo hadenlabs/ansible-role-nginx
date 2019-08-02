@@ -1,0 +1,29 @@
+---
+# vars file for equipindustry.nginx (Ubuntu specific)
+
+# _nginx_pip_packges:
+#   name: pip
+#   version:
+
+_root_group: root
+_nginx_conf_path: /etc/nginx/conf.d
+_nginx_conf_file_path: /etc/nginx/nginx.conf
+_nginx_mime_file_path: /etc/nginx/mime.types
+_nginx_pidfile: /run/nginx.pid
+_nginx_vhost_path: /etc/nginx/sites-enabled
+_nginx_default_vhost_path: "/etc/nginx/sites-enabled/{{ nginx_vhosts_filename }}"
+__nginx_user: "www-data"
+_nginx_package_name: "nginx"
+_nginx_packages:
+  - software-properties-common
+  - python-software-properties
+
+# Use the official Nginx PPA for Ubuntu, and the version to use if so.
+_nginx_ppa_use: true
+_nginx_ppa_version: stable
+
+_nginx_templates:
+  - template: 'etc/nginx/conf.d/gzip.conf.j2'
+    path: '{{ _nginx_conf_path }}/gzip.conf'
+  - template: 'etc/nginx/mime.types.j2'
+    path: '{{ _nginx_mime_file_path }}'
