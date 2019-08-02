@@ -1,0 +1,21 @@
+---
+# task file for equipindustry.nginx
+
+- name: Update package repositories
+  apt:
+    update_cache: True
+  become: true
+  when: ansible_pkg_mgr == "apt"
+  tags:
+    - apt
+    - update_cache
+    - install
+
+- name: Install nginx package dependencies
+  become: true
+  package: name={{ item }} state=present
+  with_items: "{{ _nginx_packages | default([]) }}"
+  register: install_nginx_packages
+  when: _nginx_packages is defined
+  tags:
+    - install
