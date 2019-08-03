@@ -17,8 +17,10 @@ PyHamcrest = ">=1.9.0"
 ansible = "*"
 docker-py = "*"
 pre-commit = "*"
+Jinja2 = ">=2.10.0"
+pyyaml = "*"
 
 [packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.3"
