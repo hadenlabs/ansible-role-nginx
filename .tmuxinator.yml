@@ -1,6 +1,6 @@
 # ~/.tmuxinator/ansible-role-nginx.yml
 name: ansible-role-nginx
-root: <%= ENV["PROJECTS"] %>/ansible/roles/ansible-role-nginx
+root: ./
 # Optional tmux socket
 # socket_name: foo
 
