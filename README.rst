@@ -1,7 +1,7 @@
 Ansible Role Nginx
 ==================
 
-|Build Status| |Ansible Galaxy| |GitHub issues| |Percentage of issues still open| |GitHub license|
+|Build Status| |Ansible Galaxy| |GitHub issues| |GitHub license|
 
 :Version: 0.0.0
 :Web: https://github.com/equipindustry/ansible-role-nginx
@@ -19,7 +19,7 @@ Requirements:
 
 List of applications:
 
-- `Python 3.6.4`_
+- `Pyenv`_
 - `Docker`_
 - `Docker Compose`_
 
@@ -84,9 +84,17 @@ Please see `CHANGELOG`_ for more information what
 has changed recently.
 
 Contributing
-------------
+============
 
 Please see `CONTRIBUTING`_ for details.
+
+
+Versioning
+----------
+
+Releases are managed using bitbucket release feature. We use [Semantic Versioning](http://semver.org) for all
+the releases. Every change made to the code base will be referred to in the release notes (except for
+cleanups and refactorings).
 
 Credits
 -------
@@ -100,12 +108,10 @@ Made with :heart: :coffee: and :pizza: by `author`_ and `company`_.
 
 .. |Build Status| image:: https://travis-ci.org/equipindustry/ansible-role-nginx.svg
    :target: https://travis-ci.org/equipindustry/ansible-role-nginx
-.. |Ansible Galaxy| image:: https://img.shields.io/badge/galaxy-equipindustry.python-blue.svg
+.. |Ansible Galaxy| image:: https://img.shields.io/badge/galaxy-equipindustry.nginx-blue.svg
    :target: https://galaxy.ansible.com/equipindustry/ansible-role-nginx/
 .. |GitHub issues| image:: https://img.shields.io/github/issues/equipindustry/ansible-role-nginx.svg
    :target: https://github.com/equipindustry/ansible-role-nginx/issues
-.. |Average time to resolve an issue| image:: http://isitmaintained.com/badge/resolution/equipindustry/ansible-role-nginx.svg
-   :target: http://isitmaintained.com/project/equipindustry/ansible-role-nginx
 .. |GitHub license| image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
    :target: LICENSE
 
@@ -121,6 +127,6 @@ Made with :heart: :coffee: and :pizza: by `author`_ and `company`_.
 .. dependences
 .. _Nginx: https://www.nginx.com
 .. _Python: https://www.python.org
-.. _Python 3.6.4: https://www.python.org/downloads/release/python-364
+.. _Pyenv: https://github.com/pyenv/pyenv
 .. _Docker: https://www.docker.com/
 .. _Docker Compose: https://docs.docker.com/compose/
