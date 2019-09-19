@@ -19,6 +19,7 @@ docker-py = "*"
 pre-commit = "*"
 pyyaml = "*"
 jinja2 = "*"
+restview = "*"
 
 [packages]
 
