@@ -14,7 +14,7 @@
 - name: Install nginx package dependencies
   become: true
   package: name={{ item }} state=present
-  with_items: "{{ _nginx_packages | default([]) }}"
+  with_items: '{{ _nginx_packages | default([]) }}'
   register: install_nginx_packages
   when: _nginx_packages is defined
   tags:

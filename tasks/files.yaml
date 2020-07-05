@@ -4,8 +4,8 @@
 - name: Create files nginx
   become: true
   file:
-    path: "{{ item.path }}"
-    state: "{{ item.state }}"
-    owner: "{{ item.owner }}"
-  with_items: "{{ _nginx_create_files | default({}) }}"
+    path: '{{ item.path }}'
+    state: '{{ item.state }}'
+    owner: '{{ item.owner }}'
+  with_items: '{{ _nginx_create_files | default({}) }}'
   when: _nginx_create_files is defined

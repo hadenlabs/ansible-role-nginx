@@ -1,5 +1,4 @@
 ---
-
 # vars file for nginx
 
 _root_group: root
@@ -8,9 +7,9 @@ _nginx_conf_file_path: /etc/nginx/nginx.conf
 _nginx_mime_file_path: /etc/nginx/mime.types
 _nginx_pidfile: /run/nginx.pid
 _nginx_vhost_path: /etc/nginx/sites-enabled
-_nginx_default_vhost_path: "/etc/nginx/sites-enabled/{{ nginx_vhosts_filename }}"
-__nginx_user: "www-data"
-_nginx_package_name: "nginx"
+_nginx_default_vhost_path: '/etc/nginx/sites-enabled/{{ nginx_vhosts_filename }}'
+__nginx_user: 'www-data'
+_nginx_package_name: 'nginx'
 _nginx_packages:
   - software-properties-common
   - python-software-properties

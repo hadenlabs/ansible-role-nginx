@@ -9,6 +9,6 @@
 
 - name: Ensure nginx is installed.
   yum:
-    name: "{{ _nginx_package_name }}"
+    name: '{{ _nginx_package_name }}'
     state: installed
     enablerepo: nginx

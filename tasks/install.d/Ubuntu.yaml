@@ -1,5 +1,4 @@
 ---
-
 # task file for equipindustry.nginx
 
 - name: Add PPA for Nginx.
