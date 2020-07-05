@@ -1,5 +1,3 @@
-docker_test=$(docker-compose) -f ${PATH_DOCKER_COMPOSE}/test.yml
-
 test.help:
 	@echo '    Tests:'
 	@echo ''
