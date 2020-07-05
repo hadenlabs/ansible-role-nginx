@@ -1,37 +1,31 @@
 ---
 language: python
-dist: xenial
-services: docker
-python:
-  - "3.5"
-  - "3.6"
-  - "3.7"
 
+python:
+  - 3.8
+
+sudo: false
+
+services:
+  - docker
+
+# Docker-compose setup
+# https://docs.travis-ci.com/user/docker/
 env:
   global:
-    - ROLE_NAME: python
-  matrix:
-    - TOX_ENV: ansible26-xenial
-    - TOX_ENV: ansible26-bionic
-    - TOX_ENV: ansible27-xenial
-    - TOX_ENV: ansible27-bionic
-    - TOX_ENV: ansible28-xenial
-    - TOX_ENV: ansible28-bionic
+    - DOCKER_COMPOSE_VERSION=1.25.0
 
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - cp -rf .env.example .env
+
+# install dependences
 install:
-  # Install test dependencies.
   - make setup
-  - pip install -r requirements/test.txt
 
-before_script:
-  # Use actual Ansible Galaxy role name for the project directory.
-  - cd ../
-  - mv ansible-role-$ROLE_NAME equipindustry.$ROLE_NAME
-  - cd equipindustry.$ROLE_NAME
-
-
+# execute test
 script:
-  - tox -e $TOX_ENV
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  - make test.lint
