@@ -3,21 +3,21 @@
 
 - name: Ensure nginx_vhost_path exists.
   file:
-    path: "{{ _nginx_vhost_path }}"
+    path: '{{ _nginx_vhost_path }}'
     state: directory
   notify: reload nginx
 
 - name: Add managed vhost config file (if any vhosts are configured).
   template:
     src: default.conf.j2
-    dest: "{{ _nginx_vhost_path }}/{{ nginx_vhosts_filename }}"
+    dest: '{{ _nginx_vhost_path }}/{{ nginx_vhosts_filename }}'
     mode: 0644
   when: nginx_vhosts|length > 0
   notify: reload nginx
 
 - name: Remove managed vhost config file (if no vhosts are configured).
   file:
-    path: "{{ _nginx_vhost_path }}/{{ nginx_vhosts_filename }}"
+    path: '{{ _nginx_vhost_path }}/{{ nginx_vhosts_filename }}'
     state: absent
   when: nginx_vhosts|length == 0
   notify: reload nginx
@@ -26,12 +26,9 @@
 - name: Copy nginx configuration in place.
   template:
     src: nginx.conf.j2
-    dest: "{{ _nginx_conf_file_path }}"
+    dest: '{{ _nginx_conf_file_path }}'
     owner: root
-    group: "{{ _root_group }}"
+    group: '{{ _root_group }}'
     mode: 0644
   notify:
     - reload nginx
-
-- name: Ensure nginx is started and enabled to start at boot.
-  service: name=nginx state=started enabled=yes
