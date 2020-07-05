@@ -16,12 +16,20 @@ tox = ">=2.9.1"
 PyHamcrest = ">=1.9.0"
 ansible = "*"
 docker-py = "*"
-pre-commit = "*"
 pyyaml = "*"
 jinja2 = "*"
 restview = "*"
+bumpversion = "*"
+bumplus = "*"
+pre-commit = "*"
+doc8 = "*"
 
 [packages]
 
+
+[scripts]
+test = "pytest"
+update = "pre-commit autoupdate"
+
 [requires]
-python_version = "3.7.3"
+python_version = "3.8.0"
