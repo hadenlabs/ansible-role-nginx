@@ -3,8 +3,8 @@
 
 - name: copy templates
   template:
-    src: "{{ item.template }}"
-    dest: "{{ item.path  }}"
-  with_items: "{{ _nginx_templates | default({}) }}"
+    src: '{{ item.template }}'
+    dest: '{{ item.path  }}'
+  with_items: '{{ _nginx_templates | default({}) }}'
   when:
     - _nginx_templates is defined
