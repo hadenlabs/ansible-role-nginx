@@ -1,64 +1,39 @@
 {% for item in nginx_vhost_upstreams %}
-upstream {{ item.name }} {
+  upstream {{ item.name }} {
   {% if item.proxy_pass is defined %}
-   server {{ item.proxy_pass|indent(4) }};
+    server {{ item.proxy_pass|indent(4) }};
   {% endif %}
-}
+  }
 {% endfor %}
+
 
 {% for vhost in nginx_vhosts %}
 
-server {
+  {% if vhost.listen is defined %}
+    server {
     {{ vhost.listen|indent(4) }}
 
-{% if nginx_add_security_header %}
+    {% if nginx_add_security_header %}
 
-# don't send the nginx version number in error pages and Server header
-server_tokens off;
+      # don't send the nginx version number in error pages and Server header
+      server_tokens off;
 
-# ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-add_header X-Frame-Options SAMEORIGIN;
+      # ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+      add_header X-Frame-Options SAMEORIGIN;
 
-# ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
-add_header X-Content-Type-Options nosniff always;
+      # ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+      add_header X-Content-Type-Options nosniff always;
 
-# ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
-add_header X-Xss-Protection "1; mode=block" always;
+      # ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
+      add_header X-Xss-Protection "1; mode=block" always;
 
-# ref: https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
-add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-{% endif %}
+      # ref: https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+    {% endif %}
 
-{% if vhost.server_name is defined %}
-    server_name {{ vhost.server_name }};
-{% endif %}
-
-{% if vhost.root is defined %}
-    root {{ vhost.root }};
-{% endif %}
-    index {{ vhost.index | default('index.html index.htm') }};
-{% if vhost.charset is defined %}
-    charset {{ vhost.charset }};
-{% endif %}
-{% if vhost.client_max_body_size is defined %}
-    client_max_body_size {{ vhost.client_max_body_size }};
-{% endif %}
-{% if vhost.error_page is defined %}
-    error_page {{ vhost.error_page }};
-{% endif %}
-{% if vhost.access_log is defined %}
-    access_log {{ vhost.access_log }};
-{% endif %}
-{% if vhost.error_log is defined %}
-    error_log {{ vhost.error_log }} error;
-{% endif %}
-
-{% if vhost.return is defined %}
-    return {{ vhost.return }};
-{% endif %}
-
-{% if vhost.extra_parameters is defined %}
-    {{ vhost.extra_parameters|indent(4) }}
-{% endif %}
-}
+    {% if vhost.extra_parameters is defined %}
+      {{ vhost.extra_parameters|indent(4) }}
+    {% endif %}
+    }
+  {% endif %}
 {% endfor %}
