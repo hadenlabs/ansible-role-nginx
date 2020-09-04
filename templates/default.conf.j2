@@ -8,13 +8,16 @@
 
 
 {% for vhost in nginx_vhosts %}
+server {
+    {% if vhost.server_name is defined %}
+    server_name {{ vhost.server_name|indent(4) }};
+    {% endif %}
 
-  {% if vhost.listen is defined %}
-    server {
+    {% if vhost.listen is defined %}
     {{ vhost.listen|indent(4) }}
+    {% endif %}
 
     {% if nginx_add_security_header %}
-
       # don't send the nginx version number in error pages and Server header
       server_tokens off;
 
@@ -34,6 +37,5 @@
     {% if vhost.extra_parameters is defined %}
       {{ vhost.extra_parameters|indent(4) }}
     {% endif %}
-    }
-  {% endif %}
+}
 {% endfor %}
