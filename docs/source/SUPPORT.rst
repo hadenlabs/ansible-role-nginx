@@ -6,7 +6,7 @@ If you have any problems with starting ansible-role-nginx, please report it on G
 
 
 Who is behind ansible-role-nginx
------------------------
+--------------------------------
 
 **Organisation**:
 
