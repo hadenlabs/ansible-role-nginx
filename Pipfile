@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+ansible-vault = "*"
+docker-compose = "*"
 ipdb = "*"
 ipython = "*"
 ansible-lint = "*"
@@ -16,13 +18,12 @@ tox = ">=2.9.1"
 PyHamcrest = ">=1.9.0"
 ansible = "*"
 docker-py = "*"
-pyyaml = "*"
-jinja2 = "*"
-restview = "*"
 bumpversion = "*"
 bumplus = "*"
 pre-commit = "*"
 doc8 = "*"
+restview = "*"
+rst = "*"
 
 [packages]
 
