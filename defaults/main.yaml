@@ -51,7 +51,8 @@ nginx_extra_http_options: ''
 nginx_vhosts_filename: 'default'
 nginx_vhosts: []
 # Example vhost below, showing all available options:
-# - listen: "80 default_server" # default: "80 default_server"
+# - server_name: "web name default_server" # default: "80 default_server"
+#   listen: "80 default_server" # default: "80 default_server"
 #   server_name: "example.com" # default: N/A
 #   root: "/var/www/example.com" # default: N/A
 #   index: "index.html index.htm" # default: "index.html index.htm"
@@ -63,6 +64,7 @@ nginx_vhosts: []
 #   charset: ""
 #   client_max_body_size: ""
 #   extra_parameters: "" # Can be used to add extra config blocks (multiline).
+
 nginx_vhost_upstreams: []
 # - name: django
 #   proxy_pass: 127.0.0.1:9000
