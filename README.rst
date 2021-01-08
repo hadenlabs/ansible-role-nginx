@@ -6,9 +6,9 @@ Ansible Role Nginx
 |Build Status| |GitHub issues| |GitHub license|
 
 :Version: 0.0.0
-:Web: https://github.com/equipindustry/ansible-role-nginx
-:Download: http://github.com/equipindustry/ansible-role-nginx
-:Source: http://github.com/equipindustry/ansible-role-nginx
+:Web: https://github.com/hadenlabs/ansible-role-nginx
+:Download: http://github.com/hadenlabs/ansible-role-nginx
+:Source: http://github.com/hadenlabs/ansible-role-nginx
 :Keywords: ansible-role-nginx
 
 .. contents:: Table of Contents:
@@ -31,7 +31,7 @@ Install it with the following command:
 
 .. code-block:: bash
 
-    $ ansible-galaxy install equipindustry.nginx
+    $ ansible-galaxy install hadenlabs.nginx
 
 Role Variables
 --------------
@@ -68,7 +68,7 @@ this:
 
         - hosts: servers
           roles:
-            - equipindustry.nginx
+            - hadenlabs.nginx
 
 Quick Start
 ===========
@@ -138,14 +138,14 @@ Feel free to contact me to discuss any issues, questions, or comments.
 
 |linkedin| |beacon| |made|
 
-Made with :coffee: and :pizza: by `Luis Mayta`_ and `equipindustry`_.
+Made with :coffee: and :pizza: by `Luis Mayta`_ and `hadenlabs`_.
 
 .. Links
 .. _`changelog`: CHANGELOG.rst
 .. _`contributors`: docs/source/AUTHORS.rst
 .. _`contributing`: docs/source/CONTRIBUTING.rst
 
-.. _`equipindustry`: https://github.com/equipindustry
+.. _`hadenlabs`: https://github.com/hadenlabs
 .. _`Luis Mayta`: https://github.com/luismayta
 
 
@@ -157,10 +157,10 @@ Made with :coffee: and :pizza: by `Luis Mayta`_ and `equipindustry`_.
 .. _`Website`: https://luismayta.github.io
 .. _`PGP`: https://keybase.io/luismayta/pgp_keys.asc
 
-.. |Build Status| image:: https://travis-ci.org/equipindustry/ansible-role-nginx.svg
-   :target: https://travis-ci.org/equipindustry/ansible-role-nginx
-.. |GitHub issues| image:: https://img.shields.io/github/issues/equipindustry/ansible-role-nginx.svg
-   :target: https://github.com/equipindustry/ansible-role-nginx/issues
+.. |Build Status| image:: https://travis-ci.org/hadenlabs/ansible-role-nginx.svg
+   :target: https://travis-ci.org/hadenlabs/ansible-role-nginx
+.. |GitHub issues| image:: https://img.shields.io/github/issues/hadenlabs/ansible-role-nginx.svg
+   :target: https://github.com/hadenlabs/ansible-role-nginx/issues
 .. |GitHub license| image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
    :target: LICENSE
 
@@ -171,8 +171,8 @@ Made with :coffee: and :pizza: by `Luis Mayta`_ and `equipindustry`_.
 .. Footer:
 .. |linkedin| image:: http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png
    :target: https://pe.linkedin.com/in/luismayta
-.. |beacon| image:: https://ga-beacon.appspot.com/UA-65019326-1/github.com/equipindustry/ansible-role-nginx/readme
-   :target: https://github.com/equipindustry/ansible-role-nginx
+.. |beacon| image:: https://ga-beacon.appspot.com/UA-65019326-1/github.com/hadenlabs/ansible-role-nginx/readme
+   :target: https://github.com/hadenlabs/ansible-role-nginx
 .. |made| image:: https://img.shields.io/badge/Made%20with-Zsh-1f425f.svg
    :target: http://www.zsh.org
 

@@ -140,5 +140,5 @@ Try to keep history as linear as possible using a `rebase` merge strategy.
 
 #. Delete merged Branch
 
-.. _Issue: https://github.com/equipindustry/ansible-role-nginx/issues
-.. _Pull Request: https://github.com/equipindustry/ansible-role-nginx/pulls
+.. _Issue: https://github.com/hadenlabs/ansible-role-nginx/issues
+.. _Pull Request: https://github.com/hadenlabs/ansible-role-nginx/pulls

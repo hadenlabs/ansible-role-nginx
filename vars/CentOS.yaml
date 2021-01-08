@@ -1,5 +1,5 @@
 ---
-# vars file for equipindustry.nginx (CentOS specific)
+# vars file for hadenlabs.nginx (CentOS specific)
 
 _root_group: root
 _nginx_conf_path: /etc/nginx/conf.d

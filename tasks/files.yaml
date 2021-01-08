@@ -1,5 +1,5 @@
 ---
-# environment file for equipindustry.nginx
+# environment file for hadenlabs.nginx
 
 - name: Create files nginx
   become: true

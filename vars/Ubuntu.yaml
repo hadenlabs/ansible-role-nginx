@@ -1,5 +1,5 @@
 ---
-# vars file for equipindustry.nginx (Ubuntu specific)
+# vars file for hadenlabs.nginx (Ubuntu specific)
 
 # _nginx_pip_packges:
 #   name: pip

@@ -1,5 +1,5 @@
 ---
-# task for equipindustry.nginx
+# task for hadenlabs.nginx
 
 - name: include os specific variables
   include_vars: '{{ item }}'
