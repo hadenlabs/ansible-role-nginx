@@ -1,5 +1,5 @@
 ---
-# task file for equipindustry.nginx
+# task file for hadenlabs.nginx
 
 - name: copy templates
   template:

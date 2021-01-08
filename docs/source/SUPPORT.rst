@@ -2,7 +2,7 @@
 Support & Contact
 =================
 
-If you have any problems with starting ansible-role-nginx, please report it on GitHub: https://github.com/equipindustry/ansible-role-nginx
+If you have any problems with starting ansible-role-nginx, please report it on GitHub: https://github.com/hadenlabs/ansible-role-nginx
 
 
 Who is behind ansible-role-nginx

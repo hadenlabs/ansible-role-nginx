@@ -1,13 +1,13 @@
 {
   "keywords": [],
-  "name": "@equipindustry/ansible-role-nginx",
+  "name": "@hadenlabs/ansible-role-nginx",
   "description": "ansible-role-nginx for ansible",
   "private": true,
-  "repository": "ssh://git@github.com/equipindustry/ansible-role-nginx.git",
+  "repository": "ssh://git@github.com/hadenlabs/ansible-role-nginx.git",
   "author": "Luis Mayta <slovacus@gmail.com>",
   "license": "MIT",
   "stylintrc": ".stylintrc",
-  "version": "0.3.0",
+  "version": "0..0",
   "scripts": {
     "clean": "rimraf -rf dist",
     "clean:cache": "yarn clean ./node_modules/.cache",
