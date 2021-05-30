@@ -1,0 +1,66 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: ansible-role-nginx
+
+email:
+  support: support@hadenlabs.com
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: 'LGPL-3.0'
+
+# Canonical GitHub repo
+github_repo: hadenlabs/ansible-role-nginx
+
+# Badges to display
+badges:
+  - name: GitHub release
+    image: https://img.shields.io/github/release/hadenlabs/ansible-role-nginx?style=flat-square
+    url: https://github.com/hadenlabs/ansible-role-nginx/releases/latest
+  - name: Lint
+    image: https://img.shields.io/github/workflow/status/hadenlabs/ansible-role-nginx/lint-code
+    url: https://github.com/hadenlabs/ansible-role-nginx/actions?workflow=lint-code
+  - name: Conventional Commits
+    image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
+    url: https://conventionalcommits.org
+  - name: KeepAChangelog
+    image: https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735
+    url: https://keepachangelog.com
+
+# Short description of this project
+description: |-
+  ansible-role-nginx for hadenlabs.
+
+requirements: |-
+
+  This is a list of applications that need to be installed previously to enjoy all the goodies of this configuration:
+
+  - [Pyenv](https://github.com/pyenv/pyenv)
+  - [Docker](https://www.docker.com/)
+
+  or
+
+  - [zsh-pyenv](https://github.com/luismayta/zsh-pyenv)
+  - [zsh-docker](https://github.com/hadenlabs/zsh-docker)
+
+# How to use this project
+usage: |-
+  ```bash
+    ansible-galaxy install hadenlabs.nginx
+  ```
+
+  Full working examples can be found in [examples](./examples) folder.
+
+examples:
+  - 'docs/examples/common.md'
+
+include:
+  - 'docs/include/targets.md'
+  - 'docs/include/ansible.md'
