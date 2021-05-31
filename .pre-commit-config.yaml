@@ -40,10 +40,12 @@ repos:
       - id: fix-encoding-pragma
       - id: sort-simple-yaml
   - repo: https://github.com/hadenlabs/pre-commit-hooks
-    rev: e0dd0da9bbbcebe598b0e40121556ab81c539614
+    rev: 2bed7c6ec4930b235aaf54aff1cf34e3df694f37
     hooks:
       - id: do-not-commit
       - id: markdown-link-check
+        args:
+          - --config=.github/linters/markdown-link-config.json
         exclude: \.tpl.md$
       - id: shellcheck
         exclude: >
@@ -84,3 +86,11 @@ repos:
           - '--ignore-path=.github/linters/.eslintignore'
         files: \.(js|jsx|ts|tsx|mjs|d.ts)$
         exclude: node_modules
+      - id: ansible-lint
+        name: Ansible-lint
+        description: This hook runs ansible-lint.
+        entry: ansible-lint
+        args:
+          - '--force-color'
+        language: python
+        pass_filenames: false
