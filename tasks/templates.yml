@@ -1,6 +1,4 @@
 ---
-# task file for hadenlabs.nginx
-
 - name: copy templates
   template:
     src: '{{ item.template }}'

@@ -1,6 +1,4 @@
 ---
-# task for hadenlabs.nginx
-
 - name: Ensure nginx_vhost_path exists.
   become: yes
   file:

@@ -1,6 +1,4 @@
 ---
-# task file for hadenlabs.nginx
-
 - name: Add PPA for Nginx.
   apt_repository:
     repo: 'ppa:nginx/{{ _nginx_ppa_version }}'
