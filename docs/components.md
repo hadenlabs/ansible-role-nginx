@@ -1,17 +1,11 @@
 <!-- Space: AnsibleRoleNginx -->
 <!-- Parent: Project -->
-<!-- Title: Project Authors -->
+<!-- Title: Components -->
 
 <!-- Label: AnsibleRoleNginx -->
 <!-- Label: Project -->
-<!-- Label: Authors -->
+<!-- Label: Components -->
 <!-- Include: docs/disclaimer.md -->
 <!-- Include: ac:toc -->
 
-# Authors
-
-## Leads
-
-- Luis Mayta [@luismayta](https://github.com/luismayta)
-
-## Contributors (chronological)
+# components

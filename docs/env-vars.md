@@ -1,17 +1,13 @@
 <!-- Space: AnsibleRoleNginx -->
 <!-- Parent: Project -->
-<!-- Title: Project Authors -->
+<!-- Title: Env Vars -->
 
 <!-- Label: AnsibleRoleNginx -->
 <!-- Label: Project -->
-<!-- Label: Authors -->
+<!-- Label: Env Vars -->
 <!-- Include: docs/disclaimer.md -->
 <!-- Include: ac:toc -->
 
-# Authors
+---
 
-## Leads
-
-- Luis Mayta [@luismayta](https://github.com/luismayta)
-
-## Contributors (chronological)
+## Env Vars
