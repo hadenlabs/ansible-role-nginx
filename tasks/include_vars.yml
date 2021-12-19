@@ -1,14 +1,9 @@
 ---
-# task for hadenlabs.nginx
-
 - name: include os specific variables
-  include_vars: '{{ item }}'
+  include_vars: '{{ansible_os_family | lower }}.yml'
   with_first_found:
-    - '{{ ansible_distribution }}.yaml'
-    - '{{ ansible_os_family }}.yaml'
-    - 'main.yaml'
-
-- name: Define nginx_user.
-  set_fact:
-    nginx_user: '{{ __nginx_user }}'
-  when: nginx_user is not defined
+    - '{{ ansible_os_family | lower }}.yml'
+    - 'main.yml'
+  tags:
+    - 'nginx'
+    - 'nginx-vars'
