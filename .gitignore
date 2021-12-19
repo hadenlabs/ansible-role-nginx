@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/python,node,go,terraform,ansible
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,node,go,terraform,ansible
+# Created by https://www.toptal.com/developers/gitignore/api/python,node,go,zsh,sonar,osx,linux,ansible
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,node,go,zsh,sonar,osx,linux,ansible
 
 ### Ansible ###
 *.retry
@@ -26,6 +26,21 @@
 /vendor/
 /Godeps/
 
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
 ### Node ###
 # Logs
 logs
@@ -34,6 +49,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.pnpm-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -70,8 +86,8 @@ build/Release
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
-typings/
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -81,9 +97,6 @@ typings/
 
 # Optional eslint cache
 .eslintcache
-
-# Optional stylelint cache
-.stylelintcache
 
 # Microbundle cache
 .rpt2_cache/
@@ -103,7 +116,7 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
-.env*.local
+.env.production
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -111,18 +124,11 @@ typings/
 
 # Next.js build output
 .next
+out
 
 # Nuxt.js build / generate output
 .nuxt
 dist
-
-# Storybook build outputs
-.out
-.storybook-out
-storybook-static
-
-# rollup.js default build output
-dist/
 
 # Gatsby files
 .cache/
@@ -148,9 +154,50 @@ dist/
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Temporary folders
-tmp/
-temp/
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+### Node Patch ###
+# Serverless Webpack directories
+.webpack/
+
+# Optional stylelint cache
+.stylelintcache
+
+# SvelteKit build / generate output
+.svelte-kit
+
+### OSX ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -164,14 +211,16 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+dist/
 downloads/
 eggs/
 .eggs/
+lib/
+lib64/
 parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -200,7 +249,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-pytestdebug.log
+cover/
 
 # Translations
 *.mo
@@ -220,9 +269,9 @@ instance/
 
 # Sphinx documentation
 docs/_build/
-doc/_build/
 
 # PyBuilder
+.pybuilder/
 target/
 
 # Jupyter Notebook
@@ -233,7 +282,9 @@ profile_default/
 ipython_config.py
 
 # pyenv
-.python-version
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -241,9 +292,6 @@ ipython_config.py
 #   having no cross-platform support, pipenv may install dependencies that don't work, or not
 #   install all needed dependencies.
 #Pipfile.lock
-
-# poetry
-#poetry.lock
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
@@ -256,15 +304,12 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-# .env
-.env/
-.venv/
+.venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
-pythonenv*
 
 # Spyder project settings
 .spyderproject
@@ -287,46 +332,47 @@ dmypy.json
 # pytype static type analyzer
 .pytype/
 
-# operating system-related files
-# file properties cache/storage on macOS
-*.DS_Store
-# thumbnail cache on Windows
-Thumbs.db
+# Cython debug symbols
+cython_debug/
 
-# profiling data
-.prof
+### Sonar ###
+#Sonar generated dir
+/.sonar/
 
+### Zsh ###
+# Zsh compiled script + zrecompile backup
+*.zwc
+*.zwc.old
 
-### Terraform ###
-# Local .terraform directories
-**/.terraform/*
+# Zsh completion-optimization dumpfile
+*zcompdump*
 
-# .tfstate files
-*.tfstate
-*.tfstate.*
+# Zsh zcalc history
+.zcalc_history
 
-# Crash log files
-crash.log
+# A popular plugin manager's files
+._zinit
+.zinit_lstupd
 
-# Ignore any .tfvars files that are generated automatically for each Terraform run. Most
-# .tfvars files are managed as part of configuration and so should be included in
-# version control.
-#
-# example.tfvars
+# zdharma/zshelldoc tool's files
+zsdoc/data
 
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+# robbyrussell/oh-my-zsh/plugins/per-directory-history plugin's files
+# (when set-up to store the history in the local directory)
+.directory_history
 
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
+# MichaelAquilina/zsh-autoswitch-virtualenv plugin's files
+# (for Zsh plugins using Python)
 
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
+# Zunit tests' output
+/tests/_output/*
+!/tests/_output/.gitkeep
 
-# End of https://www.toptal.com/developers/gitignore/api/python,node,go,terraform,ansible
-bin
+# End of https://www.toptal.com/developers/gitignore/api/python,node,go,zsh,sonar,osx,linux,ansible
+# custom git ignore files
+*.lock.hcl
+.scannerwork
+.secrets
+.task
+TMP_CHANGELOG.md
 bin
