@@ -63,7 +63,7 @@ To resolve a conflict, run the following commands.
 
 ```bash
 # checkout a branch you open MR from
-git fetch upstream # assuming upstream is rfid/ansible-role-nginx
+git fetch upstream # assuming upstream is hadenlabs/ansible-role-nginx
 git merge upstream/merge_branch # Where merge_branch is a branch you open merge request against.
 # resolve merge requests
 git add changed_files
