@@ -41,6 +41,9 @@ badges:
   - name: Conventional Commits
     image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
     url: https://conventionalcommits.org
+  - name: KeepAChangelog
+    image: https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange
+    url: https://keepachangelog.com
 
 requirements: |-
 
@@ -55,13 +58,8 @@ description: |-
 
   ansible-role-nginx for hadenlabs.
 
-# How to use this project
-usage: |-
-  ```bash
-    ansible-galaxy install hadenlabs.nginx
-  ```
-
-  Full working examples can be found in [examples](./examples) folder.
+usages:
+  - docs/usage.md
 
 examples:
   - 'docs/examples/common.md'

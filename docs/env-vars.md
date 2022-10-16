@@ -1,11 +1,10 @@
-<!-- Space: AnsibleRoleNginx -->
-<!-- Parent: Project -->
-<!-- Title: Env Vars -->
-
+<!-- Space: Projects -->
+<!-- Parent: AnsibleRoleNginx -->
+<!-- Title: EnvVars AnsibleRoleNginx -->
 <!-- Label: AnsibleRoleNginx -->
 <!-- Label: Project -->
-<!-- Label: Env Vars -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Label: EnvVars -->
+<!-- Include: disclaimer.md -->
 <!-- Include: ac:toc -->
 
 ---

@@ -5,6 +5,8 @@ nginx_only_deploy: no
 # active conf nginx
 nginx_gzip: yes
 
+nginx_user: www-data
+
 # security
 nginx_add_security_header: yes
 

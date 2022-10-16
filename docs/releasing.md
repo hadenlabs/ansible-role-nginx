@@ -1,11 +1,10 @@
-<!-- Space: AnsibleRoleNginx -->
-<!-- Parent: Project -->
-<!-- Title: Releasing -->
-
+<!-- Space: Projects -->
+<!-- Parent: AnsibleRoleNginx -->
+<!-- Title: Releasing AnsibleRoleNginx -->
 <!-- Label: AnsibleRoleNginx -->
 <!-- Label: Project -->
 <!-- Label: Releasing -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: disclaimer.md -->
 <!-- Include: ac:toc -->
 
 # Releasing

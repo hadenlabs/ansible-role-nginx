@@ -1,3 +1,11 @@
+<!-- Space: Projects -->
+<!-- Parent: AnsibleRoleNginx -->
+<!-- Title: Security AnsibleRoleNginx -->
+<!-- Label: AnsibleRoleNginx -->
+<!-- Label: Security -->
+<!-- Include: docs/disclaimer.md -->
+<!-- Include: ac:toc -->
+
 # Security Policy
 
 ## Reporting a Security Bug

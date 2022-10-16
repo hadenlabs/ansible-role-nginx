@@ -1,13 +1,3 @@
-<!-- Space: AnsibleRoleNginx -->
-<!-- Parent: Project -->
-<!-- Title: Project Authors -->
-
-<!-- Label: AnsibleRoleNginx -->
-<!-- Label: Project -->
-<!-- Label: Authors -->
-<!-- Include: docs/disclaimer.md -->
-<!-- Include: ac:toc -->
-
 # Authors
 
 ## Leads

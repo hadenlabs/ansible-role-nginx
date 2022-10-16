@@ -1,16 +1,18 @@
 ---
-- name: Update apt cache.
-  apt: update_cache=yes cache_valid_time=600
-  when: ansible_os_family == 'Debian'
-
 - name: Install nginx package dependencies
   ansible.builtin.package:
-    name: '{{ _nginx_packages }}'
+    name: '{{ nginx_packages }}'
     state: present
   become: true
   register: install_nginx_packages
-  when: _nginx_packages is defined
+  when: nginx_packages is defined
   tags:
     - install
-    - apt
-    - update_cache
+
+- name: install dependencies pip
+  become: True
+  pip:
+    name: '{{ nginx_pip_modules }}'
+  when: nginx_pip_modules is defined
+  tags:
+    - install

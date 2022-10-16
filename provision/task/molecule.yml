@@ -18,6 +18,14 @@ tasks:
     desc: run test molecule.
     run: once
     cmds:
+      - pipenv run molecule test --scenario-name={{.SCENARIO}} --destroy=always
+    deps:
+      - task: check
+
+  test:all:
+    desc: run test molecule.
+    run: once
+    cmds:
       - pipenv run molecule test --all --destroy=always
     deps:
       - task: check
@@ -26,6 +34,14 @@ tasks:
     desc: create scenario molecule.
     run: once
     cmds:
-      - pipenv run molecule init scenario {{.SCENARIO}} --driver-name=docker --provisioner-name=ansible --role-name=ansible-role-nginx
+      - pipenv run molecule init scenario {{.SCENARIO}} --driver-name=ec2 --provisioner-name=ansible --role-name=ansible-role-nginx
+    deps:
+      - task: check
+
+  scenario:test:
+    desc: run test molecule with scenario.
+    run: once
+    cmds:
+      - task: test
     deps:
       - task: check
