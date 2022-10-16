@@ -1,9 +1,27 @@
-### basic
+<!-- Space: Projects -->
+<!-- Parent: AnsibleRoleNginx -->
+<!-- Title: Examples AnsibleRoleNginx -->
+<!-- Label: Examples -->
+<!-- Include: ./../disclaimer.md -->
+<!-- Include: ac:toc -->
 
-To run this playbook with default settings, create a basic playbook like this:
+## packages
 
-```{.yaml}
-- hosts: servers
+To run this playbook with default settings, for install package like this:
+
+generate file `requirements.yml`
+
+```yaml
+- name: hadenlabs.ansible-role-nginx
+  src: git+https://github.com/hadenlabs/ansible-role-nginx
+  version: /main
+```
+
+```yaml
+- hosts: all
   roles:
-    - hadenlabs.nginx
+    - role: hadenlabs.ansible-role-nginx
+      become: true
+      vars:
+        ansible-role-nginx_owner: ubuntu
 ```

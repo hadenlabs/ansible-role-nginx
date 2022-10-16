@@ -1,12 +1,11 @@
-<!-- Space: AnsibleRoleNginx -->
-<!-- Parent: Project -->
-<!-- Title: Contributing GitFlow -->
-
+<!-- Space: Projects -->
+<!-- Parent: AnsibleRoleNginx -->
+<!-- Title: Contributing GitFlow AnsibleRoleNginx -->
 <!-- Label: AnsibleRoleNginx -->
 <!-- Label: Project -->
 <!-- Label: Contributing -->
 <!-- Label: GitFlow -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
 
 To contribute to ansible-role-nginx project on [GitHub](https://github.com/hadenlabs/ansible-role-nginx), We use Gitflow (See more [here](https://datasift.github.io/gitflow/IntroducingGitFlow.html)) In a nutshell, it means that you should branch from the main repository and contribute back by making [pull request](https://github.com/hadenlabs/ansible-role-nginx/pulls).
@@ -17,7 +16,7 @@ To contribute to ansible-role-nginx project on [GitHub](https://github.com/haden
 
 To follow the instructions in this guide and start contributing to ansible-role-nginx project on Gitlab:
 
-1.  **Fork** the repo on GitLab
+1.  **Fork** the repo on GitHub
 2.  **Clone** the project to your own machine
 
 To synchronize with the main repository, add it to the remotes:
