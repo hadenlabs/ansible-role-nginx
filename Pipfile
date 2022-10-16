@@ -20,12 +20,16 @@ pydocstyle = "*"
 pygments = "*"
 pylint = "*"
 pymdown-extensions = "*"
-molecule = {extras = ["docker", "lint"], version = "*"}
+pytest-testinfra = ">=6.3.0"
+pytest = ">=6.2.4"
+black = "*"
+boto = "*"
 
 [packages]
+molecule = {extras = ["docker", "lint"], version = "*"}
+ansible = ">=2.9"
+ansible-vault = "*"
+molecule-ec2 = "*"
 
 [scripts]
 update = "pre-commit autoupdate"
-
-[requires]
-python_version = "3.9.2"

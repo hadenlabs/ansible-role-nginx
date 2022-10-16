@@ -1,0 +1,113 @@
+---
+- name: Destroy
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  no_log: '{{ molecule_no_log }}'
+  collections:
+    - community.aws
+  vars:
+    # Run config handling
+    default_run_id: "{{ lookup('password', '/dev/null chars=ascii_lowercase length=5') }}"
+    default_run_config:
+      run_id: '{{ default_run_id }}'
+
+    run_config_path: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}/run-config.yml"
+    run_config_from_file: "{{ (lookup('file', run_config_path, errors='ignore') or '{}') | from_yaml }}"
+    run_config: '{{ default_run_config | combine(run_config_from_file) }}'
+
+    # Platform settings handling
+    default_aws_profile: "{{ lookup('env', 'AWS_PROFILE') }}"
+    default_aws_region: "{{ molecule_yml.driver.region | d('us-east-2') }}"
+    default_key_inject_method: cloud-init # valid values: [cloud-init, ec2]
+    default_key_name: 'molecule-{{ run_config.run_id }}'
+    default_security_group_name: 'molecule-{{ run_config.run_id }}'
+
+    platform_defaults:
+      aws_profile: '{{ default_aws_profile }}'
+      key_inject_method: '{{ default_key_inject_method }}'
+      key_name: '{{ default_key_name }}'
+      region: '{{ default_aws_region }}'
+      security_group_name: '{{ default_security_group_name }}'
+      security_groups: []
+      vpc_id: ''
+      vpc_subnet_id: ''
+
+    # Merging defaults into a list of dicts is, it turns out, not straightforward
+    platforms: >-
+      {{ [platform_defaults | dict2items]
+           | product(molecule_yml.platforms | map('dict2items') | list)
+           | map('flatten', levels=1)
+           | list
+           | map('items2dict')
+           | list }}
+
+    # Stored instance config
+    instance_config: "{{ (lookup('file', molecule_instance_config, errors='ignore') or '{}') | from_yaml }}"
+  tasks:
+    - name: Get the default subnet IDs
+      ec2_vpc_subnet_info:
+        region: '{{ default_aws_region }}'
+        filters:
+          default-for-az: 'true'
+      register: subnet_facts
+
+    - name: Choose a default subnet ID
+      set_fact:
+        default_subnet_id: >-
+          {{(
+            subnet_facts.subnets |
+            map(attribute='subnet_id') |
+            list |
+            random(seed=inventory_hostname)
+          )}}
+
+    - name: Destroy ephemeral EC2 instances
+      ec2_instance:
+        region: '{{ item.region | default(omit) }}'
+        instance_ids: "{{ instance_config | map(attribute='instance_ids') | flatten }}"
+        state: absent
+      loop: '{{ platforms }}'
+      loop_control:
+        label: '{{ item.name }}'
+      register: ec2_instances_async
+      async: 7200
+      poll: 0
+
+    - name: Wait for instance destruction to complete
+      async_status:
+        jid: '{{ item.ansible_job_id }}'
+      loop: '{{ ec2_instances_async.results }}'
+      loop_control:
+        index_var: index
+        label: '{{ platforms[index].name }}'
+      register: ec2_instances
+      until: ec2_instances is finished
+      retries: 300
+
+    - name: Write Molecule instance configs
+      copy:
+        dest: '{{ molecule_instance_config }}'
+        content: '{{ {} | to_yaml }}'
+
+    - name: Destroy ephemeral security groups (if needed)
+      ec2_group:
+        region: '{{ item.region | default(omit) }}'
+        name: '{{ item.security_group_name }}'
+        state: absent
+      loop: '{{ platforms }}'
+      loop_control:
+        index_var: index
+        label: '{{ item.name }}'
+      when: item.security_groups | length == 0
+
+    - name: Destroy ephemeral keys (if needed)
+      ec2_key:
+        region: '{{ item.region | default(omit) }}'
+        name: '{{ item.key_name }}'
+        state: absent
+      loop: '{{ platforms }}'
+      loop_control:
+        index_var: index
+        label: '{{ item.name }}'
+      when: item.key_inject_method == "ec2"

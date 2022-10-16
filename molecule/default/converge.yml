@@ -3,15 +3,13 @@
   hosts: all
   become: true
 
-  pre_tasks:
-    - name: Update apt cache.
-      apt: update_cache=yes cache_valid_time=600
-      when: ansible_os_family == 'Debian'
+  roles:
+    - role: hadenlabs.nginx
 
   vars:
-    user: ubuntu
-
-  tasks:
-    - name: 'Include ansible-role-nginx'
-      include_role:
-        name: 'ansible-role-nginx'
+    user: 'ubuntu'
+    nginx_only_deploy: no
+    # active conf nginx
+    nginx_gzip: yes
+    # security
+    nginx_add_security_header: yes
