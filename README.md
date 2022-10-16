@@ -15,7 +15,7 @@
 
   -->
 
-[![Latest Release](https://img.shields.io/github/release/hadenlabs/ansible-role-nginx)](https://github.com/hadenlabs/ansible-role-nginx/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/ansible-role-nginx/lint-code)](https://github.com/hadenlabs/ansible-role-nginx/actions?workflow=lint-code) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org)
+[![Latest Release](https://img.shields.io/github/release/hadenlabs/ansible-role-nginx)](https://github.com/hadenlabs/ansible-role-nginx/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/ansible-role-nginx/lint-code)](https://github.com/hadenlabs/ansible-role-nginx/actions?workflow=lint-code) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com)
 
 # ansible-role-nginx
 
@@ -31,22 +31,42 @@ This is a list of applications that need to be installed previously to enjoy all
 
 ## Usage
 
+# How to use this project
+
 ```bash
-  ansible-galaxy install hadenlabs.nginx
+ansible-galaxy install hadenlabs.nginx
 ```
 
 Full working examples can be found in [examples](./examples) folder.
 
 ## Examples
 
-### basic
+<!-- Space: Projects -->
+<!-- Parent: AnsibleRoleNginx -->
+<!-- Title: Examples AnsibleRoleNginx -->
+<!-- Label: Examples -->
+<!-- Include: ./../disclaimer.md -->
+<!-- Include: ac:toc -->
 
-To run this playbook with default settings, create a basic playbook like this:
+## packages
 
-```{.yaml}
-- hosts: servers
+To run this playbook with default settings, for install package like this:
+
+generate file `requirements.yml`
+
+```yaml
+- name: hadenlabs.ansible-role-nginx
+  src: git+https://github.com/hadenlabs/ansible-role-nginx
+  version: /main
+```
+
+```yaml
+- hosts: all
   roles:
-    - hadenlabs.nginx
+    - role: hadenlabs.ansible-role-nginx
+      become: true
+      vars:
+        ansible-role-nginx_owner: ubuntu
 ```
 
 ## Requirements
@@ -94,7 +114,7 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ## Copyright
 
-Copyright © 2018-2021 [Hadenlabs](https://hadenlabs.com)
+Copyright © 2018-2022 [Hadenlabs](https://hadenlabs.com)
 
 ## Trademarks
 
