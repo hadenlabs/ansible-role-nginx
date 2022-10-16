@@ -1,0 +1,16 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Wait for the boot process to finish
+      raw: /bin/systemctl is-system-running
+      register: systemctl_is_system_running
+      until: systemctl_is_system_running is success
+      retries: 6
+      delay: 10
+
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal python3-requests)
+      become: true
+      changed_when: false
